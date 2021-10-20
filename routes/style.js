@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const StyleModel = require("./../model/Style");
+const protectAdminRoute = require("./../middlewares/protectAdminRoute");
+// router.use(protectAdminRoute);
 
-router.get("/", async (req, res, next) => {
+
+router.get("/", protectAdminRoute, async (req, res, next) => {
   try {
     // try to find all documents stored in styles collection
     const styles = await StyleModel.find();

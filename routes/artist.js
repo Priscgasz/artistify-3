@@ -4,11 +4,10 @@ const ArtistModel = require("./../model/Artist");
 const uploader = require("./../config/cloudinary");
 const protectAdminRoute = require("./../middlewares/protectAdminRoute");
 const StyleModel = require("./../model/Style");
-
 // router.use(protectAdminRoute);
 
 // GET - all artists
-router.get("/", async (req, res, next) => {
+router.get("/", protectAdminRoute, async (req, res, next) => {
   try {
     res.render("dashboard/artists", { artists: await ArtistModel.find() });
   } catch (err) {

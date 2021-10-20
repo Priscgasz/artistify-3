@@ -3,11 +3,10 @@ const router = new express.Router();
 const LabelModel = require("./../model/Label");
 const uploader = require("./../config/cloudinary");
 const protectAdminRoute = require("./../middlewares/protectAdminRoute");
-
 // router.use(protectAdminRoute);
 
 // GET - /dashboard/label
-router.get("/", async (req, res, next) => {
+router.get("/", protectAdminRoute, async (req, res, next) => {
   try {
     // try to find all labels stored in labels collection
     const labels = await LabelModel.find();

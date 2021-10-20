@@ -27,7 +27,7 @@
   </header> --}}
 
   <header id="header-main">
-    <span id="logo-main">
+       <span id="logo-main">
       <a href="/">Artistify</a>
     </span>
     <nav>
@@ -35,6 +35,14 @@
       <a href="/artist" class="link">artists</a> |
       <a href="/album" class="link">albums</a> |
       <a href="/dashboard" class="link"><i class="fa fa-user fa-1x"></i></a>
+      {{#unless currentUser}}
+        <a href="/auth/signin" class="link">Sign in</a>
+        <a href="/auth/signup" class="link">Sign up</a>
+        {{else}}
+        <a href="/auth/signout" class="link">Sign out</a>
+
+      {{/unless}}
+      
     </nav>
   </header>
 
